@@ -1,0 +1,37 @@
+.paddingTB60 {
+  padding: 60px 0px 60px 0px;
+}
+.about-title h1 {
+  color: #535353;
+  font-size: 45px;
+  font-weight: 600;
+}
+.about-title span {
+  color: #af0808;
+  font-size: 45px;
+  font-weight: 700;
+}
+.about-title h3 {
+  color: #535353;
+  font-size: 23px;
+  margin-bottom: 24px;
+}
+.about-title p {
+  line-height: 1.8;
+  margin: 0 0 15px;
+  width: 500px;
+}
+.about-title ul div {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  color: #535353;
+  width: 500px;
+}
+.about-title li {
+  padding-bottom: 10px;
+  color: #535353;
+  width: 500px;
+}
+.about-paddingB {
+  padding-bottom: 12px;
+}

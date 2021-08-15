@@ -1,0 +1,55 @@
+.chatOffline {
+  height: calc(100% - 12px);
+  position: relative;
+  z-index: 0;
+}
+.chatOfflineFriend {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.chatOfflineImgContainer {
+  position: relative;
+  margin-right: 10px;
+}
+
+.chatOfflineImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid white;
+}
+
+.chatOfflineFriend {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  margin-top: 10px;
+}
+.chatOfflineBadgeGrey {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: grey;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+.textOffline {
+  background-color: rgb(184, 179, 179);
+}
+@media screen and (max-width: 768px) {
+  .textOffline {
+    font-size: 0.7em;
+  }
+  .chatOfflineName {
+    font-size: 0.6em;
+  }
+  .chatOfflineImg {
+    width: 25px;
+    height: 25px;
+  }
+}

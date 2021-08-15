@@ -1,0 +1,170 @@
+.left-bin {
+  position: relative;
+  left: 15px;
+  top: 0px;
+}
+
+.right-bin {
+  position: relative;
+  left: 330px;
+  top: -389px;
+}
+
+.left-bin .bottom-row {
+  clear: left;
+}
+
+.right-bin .top-row {
+  clear: left;
+}
+
+.right-bin .bottom-row {
+  clear: left;
+}
+.board {
+  width: 610px;
+  height: 480px;
+  position: relative;
+  background-color: #ddbe84;
+  box-sizing: border-box;
+  border: 10px solid black;
+  border-radius: 10px;
+  margin: 0px;
+  padding: 0px;
+}
+.player2 {
+  transform: scaleY(-1);
+}
+.bottom-row {
+  position: relative;
+  top: 70px;
+}
+/*
+.bottom-row, .top-row {
+  margin: 0 auto;
+  width: 550px;
+  clear: both;
+}
+*/
+.middle-bar {
+  width: 20px;
+  height: 460px;
+  padding: 5px;
+  background-color: rgb(190, 70, 70);
+  position: absolute;
+  left: 280px;
+  top: 0px;
+}
+
+.dice {
+  width: 40px;
+  padding: 3px;
+}
+.btnRoll {
+  background-color: #e92e3d;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  padding: 10px 0;
+  width: 70px;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+#wrapper {
+  position: absolute;
+  right: 100px;
+  top: 46%;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.shake {
+  animation: shake 0.1s infinite;
+}
+@keyframes shake {
+  0% {
+    transform: translateZ(-100px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  16% {
+    transform: translateZ(-100px) rotateX(180deg) rotateY(180deg) rotateZ(0deg);
+  }
+  33% {
+    transform: translateZ(-100px) rotateX(360deg) rotateY(90deg) rotateZ(180deg);
+  }
+  50% {
+    transform: translateZ(-100px) rotateX(360deg) rotateY(360deg)
+      rotateZ(360deg);
+  }
+  66% {
+    transform: translateZ(-100px) rotateX(180deg) rotateY(360deg)
+      rotateZ(270deg);
+  }
+  83% {
+    transform: translateZ(-100px) rotateX(270deg) rotateY(180deg)
+      rotateZ(180deg);
+  }
+  100% {
+    transform: translateZ(-100px) rotateX(360deg) rotateY(360deg)
+      rotateZ(360deg);
+  }
+}
+.currentTurn {
+  text-align: start;
+  position: absolute;
+  left: 20px;
+  top: 5px;
+  color: #ffffff;
+}
+
+.blackText {
+  top: 38%;
+  left: 50%;
+  font-size: 22px;
+  position: absolute;
+  cursor: default;
+}
+.whiteText {
+  color: white;
+  top: 46%;
+  left: 50%;
+  font-size: 22px;
+  position: absolute;
+  cursor: default;
+}
+
+.topPage {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+.bearoffBtn {
+  background-color: #e92e3d;
+  font-weight: 700;
+  position: absolute;
+  left: 37%;
+  top: 85%;
+}
+.outSideBar {
+  display: flex;
+  position: relative;
+}
+.blackTextOutBar {
+  top: 63%;
+  left: 73%;
+  font-size: 20px;
+  position: absolute;
+  cursor: default;
+}
+.whiteTextOutBar {
+  color: white;
+  top: 63%;
+  left: 23%;
+  font-size: 20px;
+  position: absolute;
+  cursor: default;
+}

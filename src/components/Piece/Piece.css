@@ -1,0 +1,169 @@
+.Piece {
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  border-radius: 18px;
+}
+
+.Piece.Last:hover {
+  border: 1px solid yellow;
+  cursor: pointer;
+}
+.Piece.Last {
+  border: 2px solid red;
+}
+.white {
+  background-color: #fff;
+  box-shadow: 0px 2px black;
+}
+.black {
+  background-color: black;
+  box-shadow: 0px 2px white;
+}
+
+.left0 {
+  left: 18px;
+}
+.left1 {
+  left: 57px;
+}
+.left2 {
+  left: 98px;
+}
+.left3 {
+  left: 138px;
+}
+.left4 {
+  left: 176px;
+}
+.left5 {
+  left: 216px;
+}
+.bottom0 {
+  top: 422px;
+}
+.bottom1 {
+  top: 384px;
+}
+.bottom2 {
+  top: 346px;
+}
+.bottom3 {
+  top: 308px;
+}
+.bottom4 {
+  top: 270px;
+}
+.top0 {
+  top: 0px;
+}
+.top1 {
+  top: 38px;
+}
+.top2 {
+  top: 76px;
+}
+.top3 {
+  top: 114px;
+}
+.top4 {
+  top: 152px;
+}
+.right0 {
+  right: 22px;
+}
+.right1 {
+  right: 62px;
+}
+.right2 {
+  right: 102px;
+}
+.right3 {
+  right: 142px;
+}
+.right4 {
+  right: 182px;
+}
+.right5 {
+  right: 222px;
+}
+
+.blackTextTop {
+  font-size: 20px;
+  position: absolute;
+  cursor: default;
+  top: 158px;
+}
+.whiteTextTop {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  cursor: default;
+  top: 152px;
+}
+.blackTextBottom {
+  font-size: 20px;
+  position: absolute;
+  cursor: default;
+  top: 275px;
+}
+.whiteTextBottom {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  cursor: default;
+  top: 275px;
+}
+.rightText0 {
+  right: 33px;
+}
+.rightText1 {
+  right: 73px;
+}
+.rightText2 {
+  right: 113px;
+}
+.rightText3 {
+  right: 154px;
+}
+.rightText4 {
+  right: 190px;
+}
+.rightText5 {
+  right: 230px;
+}
+.leftText0 {
+  left: 27px;
+}
+.leftText1 {
+  left: 66px;
+}
+.leftText2 {
+  left: 108px;
+}
+.leftText3 {
+  left: 148px;
+}
+.leftText4 {
+  left: 186px;
+}
+.leftText5 {
+  left: 226px;
+}
+
+.middleBarWhite {
+  top: 37%;
+  left: 48%;
+}
+.middleBarBlack {
+  top: 46%;
+  left: 48%;
+}
+.outsideBar.white {
+  top: 60%;
+  left: 70%;
+}
+.outsideBar.black {
+  top: 60%;
+  left: 20%;
+}

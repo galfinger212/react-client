@@ -1,0 +1,24 @@
+.body {
+  height: calc(100% - 50px);
+  background: url("https://img.freepik.com/free-vector/white-abstract-background_23-2148810113.jpg?size=626&ext=jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.title {
+  color: white;
+  background: red;
+  border-radius: 10px;
+  padding: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.title:hover {
+  /* opacity: 0.5;
+  cursor: pointer; */
+}

@@ -1,0 +1,51 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+h3 {
+  font-weight: 200;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a.active {
+  color: var(--accent);
+}
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap");
+
+body {
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    135deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+  font-family: var(--font-family);
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover !important;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+}
+@media (max-width: 768px) {
+  body {
+    height: 100vh;
+  }
+}

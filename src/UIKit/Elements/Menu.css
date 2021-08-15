@@ -1,0 +1,60 @@
+.Menu {
+  position: relative;
+}
+
+.Menu .header {
+  padding: 0 var(--gap);
+}
+
+.Menu .header:hover {
+  cursor: pointer;
+}
+
+.Menu .header:active {
+  cursor: pointer;
+}
+.submenu .list > div:hover {
+  cursor: pointer;
+}
+
+.Menu .list {
+  border: 1px solid var(--border);
+  position: absolute;
+  background-color: var(--background);
+  top: 100%;
+  min-width: calc(100% - 2px);
+}
+
+.Menu .list > div {
+  padding: var(--gap-m);
+  border-bottom: 1px solid var(--border);
+}
+
+.Menu .list > div:hover {
+  cursor: pointer;
+  background-color: var(--background-light);
+}
+
+.Menu .list > div:active {
+  background-color: var(--background-light-active);
+}
+.menu2 .list {
+  left: calc(100% +var(--gap-m) +var(--gap-m));
+  top: calc(0% - var(--gap-m) - var(--gap-m) + 13px);
+}
+.Menu .list .disabled {
+  opacity: 0.6;
+}
+.Menu .list .disabled:hover {
+  cursor: default;
+  background-color: var(--background);
+  opacity: 0.6;
+}
+
+.logo {
+  font-size: 20px;
+  margin-left: 15px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
