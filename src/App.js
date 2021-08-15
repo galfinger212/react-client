@@ -5,6 +5,7 @@ import { AuthContext } from "./context/AuthContext";
 import { useContext, useEffect } from 'react';
 import axios from "axios";
 import { logoutCall } from "./apiCalls";
+import config from '../src/config';
 
 import Home from 'Views/Home/Home';
 import TopBar from './components/topbar/Topbar'
@@ -21,7 +22,7 @@ const App = () => {
   const { dispatch } = useContext(AuthContext);
   useEffect(async () => {
     if (user) {
-      await axios.get(`/auth/isUserAuth`, {
+      await axios.get(config.url + `/auth/isUserAuth`, {
         headers: {
           "x-access-token": localStorage.getItem("token"),
         },

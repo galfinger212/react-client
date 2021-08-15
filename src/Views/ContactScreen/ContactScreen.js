@@ -10,6 +10,7 @@ import ChatOffline from "../../components/chatOffline/chatOffline";
 import Message from "../../components/message/Message";
 import Backgammon from "../../components/Backgammon/Backgammon";
 import User from "../../components/User/User";
+import config from '../../config';
 const Points = Array(24).fill({ player: false, checkers: 0 });
 
 const ContactsScreen = () => {
@@ -44,11 +45,11 @@ const ContactsScreen = () => {
 
     //open a conversation with the selected user
     const StartChatClick = async () => {
-        await axios.get(`/conversations/find/${user._id}/${selectedUser._id}`).then((res) => {
+        await axios.get(config.url + `/conversations/find/${user._id}/${selectedUser._id}`).then((res) => {
             setCurrentChat(res.data);
         }).catch(async (err) => {
             if (err.response.status === 404) {
-                await axios.post(`/conversations`, { senderId: user._id, receiverId: selectedUser._id }).then((newRes) => {
+                await axios.post(config.url + `/conversations`, { senderId: user._id, receiverId: selectedUser._id }).then((newRes) => {
                     setCurrentChat(newRes.data);
                 }).catch((err) => {
                     console.log(err);//problem with the server
@@ -58,7 +59,7 @@ const ContactsScreen = () => {
     }
 
     useEffect(() => {
-        socket.current = io("ws://localhost:8900");
+        socket.current = io(config.socket);
         socket.current.on("getMessage", (data) => {
             setArrivalMessage({
                 sender: data.senderId,
@@ -154,11 +155,11 @@ const ContactsScreen = () => {
     useEffect(() => {
         if (arrivalGameRequest != null) {
             async function refreshToken() {
-                await axios.get(`/users/`, { params: { userId: arrivalGameRequest.sender } }).then((res) => {
+                await axios.get(config.url + `/users/`, { params: { userId: arrivalGameRequest.sender } }).then((res) => {
                     var r = myConfirm(`You Have a new Game Request from ${res.data.username}...`, 5000);
                     return r.then(async ok => {
                         if (ok) {
-                            await axios.post(`/board`, { senderId: user._id, receiverId: arrivalGameRequest.sender, currentBoard: Points }).then((newBoard) => {
+                            await axios.post(config.url + `/board`, { senderId: user._id, receiverId: arrivalGameRequest.sender, currentBoard: Points }).then((newBoard) => {
                                 setCurrentBoard(newBoard.data);
                                 setCurrentChat(null);
                                 setSelectedUser(null);
@@ -202,10 +203,10 @@ const ContactsScreen = () => {
         if (arrivalMessage &&
             currentChat?.members.includes(arrivalMessage.sender)) {
             setMessages((prev) => [...prev, arrivalMessage]);
-            await axios.put("/messages/" + arrivalMessage.messageId).catch((err) => {
+            await axios.put(config.url + "/messages/" + arrivalMessage.messageId).catch((err) => {
                 console.log(err);//problem with the server
             });//update the message to seen (server)
-            await axios.get(`/conversations/find/${user._id}/${arrivalMessage.sender}`).then((conversation) => {
+            await axios.get(config.url + `/conversations/find/${user._id}/${arrivalMessage.sender}`).then((conversation) => {
                 socket.current.emit("sendSeen", {//send to the user that sent the message that he saw the message right now
                     senderId: user._id,
                     receiverId: arrivalMessage.sender,
@@ -234,14 +235,14 @@ const ContactsScreen = () => {
         if (currentChat) {
             const getMessages = async () => {
                 try {
-                    await axios.get("/messages/" + currentChat?._id).then(async (res) => {
+                    await axios.get(config.url + "/messages/" + currentChat?._id).then(async (res) => {
                         for (let index = res.data.length - 1; index >= 0; index--) {
                             const message = res.data[index];
                             if (message.sender !== user._id) {
                                 if (message.seen === false) {
                                     //update message to seen
-                                    await axios.put("/messages/" + message._id).then(async (res) => {
-                                        await axios.get(`/conversations/find/${res.data.updateModel.conversationId}`).then((conversation) => {
+                                    await axios.put(config.url + "/messages/" + message._id).then(async (res) => {
+                                        await axios.get(config.url + `/conversations/find/${res.data.updateModel.conversationId}`).then((conversation) => {
                                             socket.current.emit("sendSeen", {
                                                 senderId: user._id,
                                                 receiverId: message.sender,
@@ -317,7 +318,7 @@ const ContactsScreen = () => {
             (member) => member !== user._id
         );
         try {
-            await axios.post("/messages", message).then((res) => {
+            await axios.post(config.url + "/messages", message).then((res) => {
                 const messageId = res.data._id;
                 socket.current.emit("sendMessage", {
                     senderId: user._id,

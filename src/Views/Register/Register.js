@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRef } from "react";
 import "./Register.css";
 import { useHistory } from "react-router";
+import config from '../../config';
 
 const LoginForm = () => {
     const username = useRef();
@@ -22,7 +23,7 @@ const LoginForm = () => {
                 password: password.current.value,
             };
             try {
-                await axios.post("/auth/register", user).then((res) => {
+                await axios.post(config.url + "/auth/register", user).then((res) => {
                     history.push("/login");
                 });
             } catch (err) {

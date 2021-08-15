@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../chatOffline/chatOffline.css";
+import config from '../../config';
 
 const ChatOffline = ({ onlineUsers, currentId }) => {
   const [users, setUsers] = useState([]);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   async function getUsers() {
-    await axios.get("/users/allUsers").then((res) => {
+    await axios.get(config.url + "/users/allUsers").then((res) => {
       let array = [];
       for (let index = 0; index < res.data.length; index++) {
         const user = res.data[index];

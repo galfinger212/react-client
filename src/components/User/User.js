@@ -1,13 +1,14 @@
 import './User.css';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import config from '../../config';
 
 const User = ({ userId, sender, typing }) => {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const [name, setName] = useState(null);
 
     useEffect(async () => {
-        await axios.get(`/users/`, { params: { userId: userId } }).then((res) => {
+        await axios.get(config.url + `/users/`, { params: { userId: userId } }).then((res) => {
             setName(res.data.username)
         }).catch((err) => {
             console.log(err);//user not found

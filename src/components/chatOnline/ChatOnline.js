@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../chatOnline/chatOnline.css";
+import config from '../../config';
 
 const ChatOnline = ({ onlineUsers, currentId, onSelectedUser, initSelectedUser }) => {
   const [online, setOnline] = useState([]);
@@ -13,7 +14,7 @@ const ChatOnline = ({ onlineUsers, currentId, onSelectedUser, initSelectedUser }
 
   //get all the users from the server and then return only the online users!
   async function getOnlineUsers() {
-    await axios.get("/users/allUsers").then((res) => {
+    await axios.get(config.url + "/users/allUsers").then((res) => {
       let array = [];
       for (let index = 0; index < onlineUsers.length; index++) {
         const user = onlineUsers[index];
