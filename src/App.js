@@ -40,26 +40,26 @@ const App = () => {
     <>
       <TopBar initHistory={history} initUser={user}></TopBar>
       <Switch>
-        <Route exact path={`${process.env.URL}`}>
+        <Route exact path="/">
           {user ? <Home /> : <Register />}
         </Route>
-        <Route path={`${process.env.URL}/signOut`}  >
+        <Route path="/signOut" >
           {user ? <SignOut initHistory={history} /> : <Redirect to="/SendMessage" />
           }</Route>
-        <Route path={`${process.env.URL}/login`}>
+        <Route path="/login">
           {user ? <Redirect to="/SendMessage" /> : <Login />}
         </Route>
-        <Route path={`${process.env.URL}/register`}>
+        <Route path="/register">
           {user ? <Redirect to="/" /> : <Register />}
         </Route>
-        <Route path={`${process.env.URL}/SendMessage`} >
+        <Route path="/SendMessage" >
           {user ? <ContactScreen /> : <Redirect to="/login" />}
         </Route>
-        <Route path={`${process.env.URL}/Backgammon`} >
+        <Route path="/Backgammon" >
           {user ? <ContactScreen /> : <Redirect to="/login" />}
         </Route>
-        <Route path={`${process.env.URL}/HowToPlay`} component={HowToPlay}></Route>
-        <Route path={`${process.env.URL}/About`} component={About}></Route>
+        <Route path="/HowToPlay" component={HowToPlay}></Route>
+        <Route path="/About" component={About}></Route>
       </Switch>
     </>
   );
