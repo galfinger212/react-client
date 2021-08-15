@@ -7,7 +7,6 @@ import Triangle from '../Triangle/Triangle';
 const Backgammon = ({ propsBoard, currentBoard, userPlayId, initSocket, EndGame }) => {
     const PF = process.env.PUBLIC_URL;
     const socket = useRef(initSocket);
-
     const [points, setPoints] = useState([]);
     const [arrivalPoints, setArrivalPoints] = useState(null);
     const [nextTurn, setNextTurn] = useState(null);
@@ -55,7 +54,7 @@ const Backgammon = ({ propsBoard, currentBoard, userPlayId, initSocket, EndGame 
             setDices(dice);
             getPointsWithoutActions(points).then(pointsNoAction => {
                 setRolling(!rolling)
-                let allPoints = CalculateAllMoves(pointsNoAction, dice, p1IsNext, middleBar).points;
+                let allPoints = CalculateAllMoves(pointsNoAction, dice).points;
                 //check if there are any optional ways to move on the board , if not he need to pass the turn 
                 if (checkIfPlayerCanMove(allPoints) === false) {
                     PassTurnToOtherUser();
@@ -184,7 +183,7 @@ const Backgammon = ({ propsBoard, currentBoard, userPlayId, initSocket, EndGame 
         })
     }
     //calculate the all optionals move of the game
-    const CalculateAllMoves = (points, AllDices, p1IsNext, middleBar) => {
+    const CalculateAllMoves = (points, AllDices) => {
         let newPoints = [...points];
         if (!AllDices[0]) {
             // No dice to play
@@ -418,12 +417,11 @@ const Backgammon = ({ propsBoard, currentBoard, userPlayId, initSocket, EndGame 
         else {//continue regular
             getPointsWithoutActions(points).then(pointsNoAction => {
                 sendCurrentPointsToEnemy(pointsNoAction);
-                let allPoints = CalculateAllMoves(pointsNoAction, dices, p1IsNext, middleBar).points;
+                let allPoints = CalculateAllMoves(pointsNoAction, dices).points;
                 if (checkIfPlayerCanMove(allPoints) === false && dices.length !== 0) {
                     PassTurnToOtherUser();
                     alert("You don't have any moves...")
                 }
-                setPoints(allPoints);
                 setPoints(allPoints);
             })
             setSelectedPiece(null);
@@ -535,7 +533,6 @@ const Backgammon = ({ propsBoard, currentBoard, userPlayId, initSocket, EndGame 
         }
         return items;
     }
-
     return (
         <>
             <div className="topPage">
@@ -561,88 +558,40 @@ const Backgammon = ({ propsBoard, currentBoard, userPlayId, initSocket, EndGame 
                 </div> : ""}
                 <div className="left-bin">
                     <div className="top-row">
-                        <Triangle column={12} onClick={checkCanReceive(12) ? movePiece : () => ""}
-                            className={`arrow-down odd ${checkCanReceive(12) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={13} onClick={checkCanReceive(13) ? movePiece : () => ""}
-                            className={`arrow-down even ${checkCanReceive(13) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={14} onClick={checkCanReceive(14) ? movePiece : () => ""}
-                            className={`arrow-down odd ${checkCanReceive(14) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={15} onClick={checkCanReceive(15) ? movePiece : () => ""}
-                            className={`arrow-down even ${checkCanReceive(15) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={16} onClick={checkCanReceive(16) ? movePiece : () => ""}
-                            className={`arrow-down odd ${checkCanReceive(16) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={17} onClick={checkCanReceive(17) ? movePiece : () => ""}
-                            className={`arrow-down even ${checkCanReceive(17) ? "triangle" : ""}`}>
-                        </Triangle>
+                        <Triangle column={12} onClick={checkCanReceive(12) ? movePiece : () => ""} className={`arrow-down odd ${checkCanReceive(12) ? "triangle" : ""}`}></Triangle>
+                        <Triangle column={13} onClick={checkCanReceive(13) ? movePiece : () => ""} className={`arrow-down even ${checkCanReceive(13) ? "triangle" : ""}`}> </Triangle>
+                        <Triangle column={14} onClick={checkCanReceive(14) ? movePiece : () => ""} className={`arrow-down odd ${checkCanReceive(14) ? "triangle" : ""}`}> </Triangle>
+                        <Triangle column={15} onClick={checkCanReceive(15) ? movePiece : () => ""} className={`arrow-down even ${checkCanReceive(15) ? "triangle" : ""}`}></Triangle>
+                        <Triangle column={16} onClick={checkCanReceive(16) ? movePiece : () => ""} className={`arrow-down odd ${checkCanReceive(16) ? "triangle" : ""}`}> </Triangle>
+                        <Triangle column={17} onClick={checkCanReceive(17) ? movePiece : () => ""} className={`arrow-down even ${checkCanReceive(17) ? "triangle" : ""}`}> </Triangle>
                     </div>
                     <div className="bottom-row">
-                        <Triangle column={11} onClick={checkCanReceive(11) ? movePiece : () => ""}
-                            className={`arrow-up odd ${checkCanReceive(11) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={10} onClick={checkCanReceive(10) ? movePiece : () => ""}
-                            className={`arrow-up even ${checkCanReceive(10) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={9} onClick={checkCanReceive(9) ? movePiece : () => ""}
-                            className={`arrow-up odd ${checkCanReceive(9) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={8} onClick={checkCanReceive(8) ? movePiece : () => ""}
-                            className={`arrow-up even ${checkCanReceive(8) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={7} onClick={checkCanReceive(7) ? movePiece : () => ""}
-                            className={`arrow-up odd ${checkCanReceive(7) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={6} onClick={checkCanReceive(6) ? movePiece : () => ""}
-                            className={`arrow-up even ${checkCanReceive(6) ? "triangle" : ""}`}>
-                        </Triangle>
+                        <Triangle column={11} onClick={checkCanReceive(11) ? movePiece : () => ""} className={`arrow-up odd ${checkCanReceive(11) ? "triangle" : ""}`}></Triangle>
+                        <Triangle column={10} onClick={checkCanReceive(10) ? movePiece : () => ""} className={`arrow-up even ${checkCanReceive(10) ? "triangle" : ""}`}> </Triangle>
+                        <Triangle column={9} onClick={checkCanReceive(9) ? movePiece : () => ""} className={`arrow-up odd ${checkCanReceive(9) ? "triangle" : ""}`}> </Triangle>
+                        <Triangle column={8} onClick={checkCanReceive(8) ? movePiece : () => ""} className={`arrow-up even ${checkCanReceive(8) ? "triangle" : ""}`}></Triangle>
+                        <Triangle column={7} onClick={checkCanReceive(7) ? movePiece : () => ""} className={`arrow-up odd ${checkCanReceive(7) ? "triangle" : ""}`}> </Triangle>
+                        <Triangle column={6} onClick={checkCanReceive(6) ? movePiece : () => ""} className={`arrow-up even ${checkCanReceive(6) ? "triangle" : ""}`}> </Triangle>
                     </div>
                 </div>
                 <div className="middle-bar">
                 </div>
                 <div className="right-bin">
                     <div className="top-row">
-                        <Triangle column={18} onClick={checkCanReceive(18) ? movePiece : () => ""}
-                            className={`arrow-down odd ${checkCanReceive(18) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={19} onClick={checkCanReceive(19) ? movePiece : () => ""}
-                            className={`arrow-down even ${checkCanReceive(19) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={20} onClick={checkCanReceive(20) ? movePiece : () => ""}
-                            className={`arrow-down odd ${checkCanReceive(20) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={21} onClick={checkCanReceive(21) ? movePiece : () => ""}
-                            className={`arrow-down even ${checkCanReceive(21) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={22} onClick={checkCanReceive(22) ? movePiece : () => ""}
-                            className={`arrow-down odd ${checkCanReceive(22) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={23} onClick={checkCanReceive(23) ? movePiece : () => ""}
-                            className={`arrow-down even ${checkCanReceive(23) ? "triangle" : ""}`}>
-                        </Triangle>
+                        <Triangle column={18} onClick={checkCanReceive(18) ? movePiece : () => ""} className={`arrow-down odd ${checkCanReceive(18) ? "triangle" : ""}`}> </Triangle>
+                        <Triangle column={19} onClick={checkCanReceive(19) ? movePiece : () => ""} className={`arrow-down even ${checkCanReceive(19) ? "triangle" : ""}`}></Triangle>
+                        <Triangle column={20} onClick={checkCanReceive(20) ? movePiece : () => ""} className={`arrow-down odd ${checkCanReceive(20) ? "triangle" : ""}`}> </Triangle>
+                        <Triangle column={21} onClick={checkCanReceive(21) ? movePiece : () => ""} className={`arrow-down even ${checkCanReceive(21) ? "triangle" : ""}`}> </Triangle>
+                        <Triangle column={22} onClick={checkCanReceive(22) ? movePiece : () => ""} className={`arrow-down odd ${checkCanReceive(22) ? "triangle" : ""}`}> </Triangle>
+                        <Triangle column={23} onClick={checkCanReceive(23) ? movePiece : () => ""} className={`arrow-down even ${checkCanReceive(23) ? "triangle" : ""}`}>  </Triangle>
                     </div>
                     <div className="bottom-row">
-                        <Triangle column={5} onClick={checkCanReceive(5) ? movePiece : () => ""}
-                            className={`arrow-up odd ${checkCanReceive(5) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={4} onClick={checkCanReceive(4) ? movePiece : () => ""}
-                            className={`arrow-up even ${checkCanReceive(4) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={3} onClick={checkCanReceive(3) ? movePiece : () => ""}
-                            className={`arrow-up odd ${checkCanReceive(3) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={2} onClick={checkCanReceive(2) ? movePiece : () => ""}
-                            className={`arrow-up even ${checkCanReceive(2) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={1} onClick={checkCanReceive(1) ? movePiece : () => ""}
-                            className={`arrow-up odd ${checkCanReceive(1) ? "triangle" : ""}`}>
-                        </Triangle>
-                        <Triangle column={0} onClick={checkCanReceive(0) ? movePiece : () => ""}
-                            className={`arrow-up even ${checkCanReceive(0) ? "triangle" : ""}`}>
-                        </Triangle>
+                        <Triangle column={5} onClick={checkCanReceive(5) ? movePiece : () => ""} className={`arrow-up odd ${checkCanReceive(5) ? "triangle" : ""}`}>   </Triangle>
+                        <Triangle column={4} onClick={checkCanReceive(4) ? movePiece : () => ""} className={`arrow-up even ${checkCanReceive(4) ? "triangle" : ""}`}>  </Triangle>
+                        <Triangle column={3} onClick={checkCanReceive(3) ? movePiece : () => ""} className={`arrow-up odd ${checkCanReceive(3) ? "triangle" : ""}`}>  </Triangle>
+                        <Triangle column={2} onClick={checkCanReceive(2) ? movePiece : () => ""} className={`arrow-up even ${checkCanReceive(2) ? "triangle" : ""}`}></Triangle>
+                        <Triangle column={1} onClick={checkCanReceive(1) ? movePiece : () => ""} className={`arrow-up odd ${checkCanReceive(1) ? "triangle" : ""}`}></Triangle>
+                        <Triangle column={0} onClick={checkCanReceive(0) ? movePiece : () => ""} className={`arrow-up even ${checkCanReceive(0) ? "triangle" : ""}`}> </Triangle>
                     </div>
                 </div>
                 {points.map((column, numColumn) => (

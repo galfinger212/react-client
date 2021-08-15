@@ -8,7 +8,7 @@ import App from './App';
 ReactDOM.render(
   <React.StrictMode>
     <AuthContextProvider>
-      <Router basename="/">
+      <Router >
         <App />
       </Router>
     </AuthContextProvider>

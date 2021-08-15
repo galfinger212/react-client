@@ -4,7 +4,7 @@ const HowToPlay = () => {
     return (
         <div className="about-section paddingTB60 gray-bg">
             <div className="container">
-                <div className="row">
+                <div >
                     <div className="col-md-7 col-sm-6">
                         <div className="about-title clearfix">
                             <h1>How to play <span>Backgammon</span></h1>

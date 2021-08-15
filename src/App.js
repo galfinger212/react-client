@@ -1,14 +1,12 @@
 import 'App.css';
-
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import { AuthContext } from "./context/AuthContext";
 import { useContext, useEffect } from 'react';
 import axios from "axios";
 import { logoutCall } from "./apiCalls";
 import config from '../src/config';
-
 import Home from 'Views/Home/Home';
-import TopBar from './components/topbar/Topbar'
+import MenuAppBar from './components/topbar/AppBar'
 import ContactScreen from 'Views/ContactScreen/ContactScreen';
 import Login from 'Views/Login/Login';
 import Register from "Views/Register/Register";
@@ -38,7 +36,7 @@ const App = () => {
   }, []);
   return (
     <>
-      <TopBar initHistory={history} initUser={user}></TopBar>
+      <MenuAppBar initHistory={history} initUser={user}></MenuAppBar>
       <Switch>
         <Route exact path="/">
           {user ? <Home /> : <Register />}

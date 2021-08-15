@@ -234,3 +234,8 @@
   word-wrap: break-word;
   z-index: -1;
 }
+@media only screen and (max-width: 600px) {
+  .messenger{
+    display: block !important;
+  }
+}
