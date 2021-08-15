@@ -21,7 +21,8 @@ const App = () => {
   const { user } = useContext(AuthContext);
   const { dispatch } = useContext(AuthContext);
   useEffect(async () => {
-    console.log(process.env.PUBLIC_URL);
+    console.log(window.location.href);
+    console.log(window.location.pathname);
     if (user) {
       await axios.get(config.url + `/auth/isUserAuth`, {
         headers: {
@@ -41,26 +42,26 @@ const App = () => {
     <>
       <TopBar initHistory={history} initUser={user}></TopBar>
       <Switch>
-        <Route exact path={process.env.PUBLIC_URL + '/'}>
+        <Route exact path="/">
           {user ? <Home /> : <Register />}
         </Route>
-        <Route path={process.env.PUBLIC_URL + '/signOut'} >
+        <Route path="/signOut" >
           {user ? <SignOut initHistory={history} /> : <Redirect to="/SendMessage" />
           }</Route>
-        <Route path={process.env.PUBLIC_URL + '/login'} >
+        <Route path="/login">
           {user ? <Redirect to="/SendMessage" /> : <Login />}
         </Route>
-        <Route path={process.env.PUBLIC_URL + '/register'} >
+        <Route path="/register">
           {user ? <Redirect to="/" /> : <Register />}
         </Route>
-        <Route path={process.env.PUBLIC_URL + '/SendMessage'}  >
+        <Route path="/SendMessage" >
           {user ? <ContactScreen /> : <Redirect to="/login" />}
         </Route>
-        <Route path={process.env.PUBLIC_URL + '/Backgammon'}  >
+        <Route path="/Backgammon" >
           {user ? <ContactScreen /> : <Redirect to="/login" />}
         </Route>
-        <Route path={process.env.PUBLIC_URL + '/HowToPlay'} component={HowToPlay}></Route>
-        <Route path={process.env.PUBLIC_URL + '/About'} component={About}></Route>
+        <Route path="/HowToPlay" component={HowToPlay}></Route>
+        <Route path="/About" component={About}></Route>
       </Switch>
     </>
   );
