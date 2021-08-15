@@ -8,7 +8,7 @@ import App from './App';
 ReactDOM.render(
   <React.StrictMode>
     <AuthContextProvider>
-      <Router>
+      <Router basename="https://talkback-sela.azurewebsites.net/">
         <App />
       </Router>
     </AuthContextProvider>
