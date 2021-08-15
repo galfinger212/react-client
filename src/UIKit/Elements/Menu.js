@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 
 import { Line, Icon } from 'UIKit';
-import './menu.css';
+import './Menu.css';
 
 const menu = (props) => {
     const [isOpen, setIsOpen] = useState(false);
