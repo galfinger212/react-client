@@ -1,23 +1,23 @@
-.Menu {
+.menu {
   position: relative;
 }
 
-.Menu .header {
+.menu .header {
   padding: 0 var(--gap);
 }
 
-.Menu .header:hover {
+.menu .header:hover {
   cursor: pointer;
 }
 
-.Menu .header:active {
+.menu .header:active {
   cursor: pointer;
 }
 .submenu .list > div:hover {
   cursor: pointer;
 }
 
-.Menu .list {
+.menu .list {
   border: 1px solid var(--border);
   position: absolute;
   background-color: var(--background);
@@ -25,27 +25,27 @@
   min-width: calc(100% - 2px);
 }
 
-.Menu .list > div {
+.menu .list > div {
   padding: var(--gap-m);
   border-bottom: 1px solid var(--border);
 }
 
-.Menu .list > div:hover {
+.menu .list > div:hover {
   cursor: pointer;
   background-color: var(--background-light);
 }
 
-.Menu .list > div:active {
+.menu .list > div:active {
   background-color: var(--background-light-active);
 }
 .menu2 .list {
   left: calc(100% +var(--gap-m) +var(--gap-m));
   top: calc(0% - var(--gap-m) - var(--gap-m) + 13px);
 }
-.Menu .list .disabled {
+.menu .list .disabled {
   opacity: 0.6;
 }
-.Menu .list .disabled:hover {
+.menu .list .disabled:hover {
   cursor: default;
   background-color: var(--background);
   opacity: 0.6;

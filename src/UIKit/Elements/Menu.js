@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
 
 import { Line, Icon } from 'UIKit';
-import './Menu.css';
+import './menu.css';
 
-const Menu = (props) => {
+const menu = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const dropdownContainer = useRef();
@@ -37,17 +37,17 @@ const Menu = (props) => {
     const renderList = () => {
         if (isOpen && props.children) {
             return (
-                <div data-testid="MenuList" className="list">
+                <div data-testid="menuList" className="list">
                     {props.children ? props.children.map(item => <div className={item.props.enabled === false ? "disabled" : ""} key={item.key} onClick={item.props.enabled !== false ? () => { handleItemClick(item) } : null}>{item}</div>) : "aaaaa"}
                 </div>
             )
         }
     }
     return (
-        <div data-testid="MenuDiv" className={`Menu ${props.className}`} ref={dropdownContainer}>
-            <div data-testid="MenuHeaderDiv" className="header" onClick={handleHeaderClick}>
+        <div data-testid="menuDiv" className={`menu ${props.className}`} ref={dropdownContainer}>
+            <div data-testid="menuHeaderDiv" className="header" onClick={handleHeaderClick}>
                 <Line>
-                    <span data-testid="MenuTitleSpan" className="logo">{props.title ? props.title : ""}</span>
+                    <span data-testid="menuTitleSpan" className="logo">{props.title ? props.title : ""}</span>
                     <Icon i={isOpen ? props.open : props.close} />
                 </Line>
             </div>
@@ -56,4 +56,4 @@ const Menu = (props) => {
     )
 }
 
-export default Menu;
+export default menu;
