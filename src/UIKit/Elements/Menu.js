@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Line, Icon } from 'UIKit';
 import './Menu.css';
 
-const menu = (props) => {
+const Menu = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const dropdownContainer = useRef();
@@ -56,4 +56,4 @@ const menu = (props) => {
     )
 }
 
-export default menu;
+export default Menu;
