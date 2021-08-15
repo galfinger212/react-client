@@ -20,7 +20,6 @@ const App = () => {
   const history = useHistory();
   const { user } = useContext(AuthContext);
   const { dispatch } = useContext(AuthContext);
-  const url = window.location.href;
   useEffect(async () => {
     if (user) {
       await axios.get(config.url + `/auth/isUserAuth`, {
@@ -44,23 +43,23 @@ const App = () => {
         <Route exact path="/">
           {user ? <Home /> : <Register />}
         </Route>
-        <Route path={url + "signOut"} >
+        <Route path="/signOut" >
           {user ? <SignOut initHistory={history} /> : <Redirect to="/SendMessage" />
           }</Route>
-        <Route path={url + "login"}>
+        <Route path="/login">
           {user ? <Redirect to="/SendMessage" /> : <Login />}
         </Route>
-        <Route path={url + "register"}>
+        <Route path="/register">
           {user ? <Redirect to="/" /> : <Register />}
         </Route>
-        <Route path={url + "SendMessage"} >
+        <Route path="/SendMessage" >
           {user ? <ContactScreen /> : <Redirect to="/login" />}
         </Route>
-        <Route path={url + "Backgammon"} >
+        <Route path="/Backgammon" >
           {user ? <ContactScreen /> : <Redirect to="/login" />}
         </Route>
-        <Route path={url + "HowToPlay"} component={HowToPlay}></Route>
-        <Route path={url + "About"} component={About}></Route>
+        <Route path="/HowToPlay" component={HowToPlay}></Route>
+        <Route path="/About" component={About}></Route>
       </Switch>
     </>
   );
