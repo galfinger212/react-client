@@ -99,13 +99,14 @@ const ContactsScreen = () => {
         //draw a board 
         function drawBoard() {
             // //set points
-            // Points[0] = { player: "black", checkers: 2 };
-            // Points[11] = { player: "black", checkers: 5 };
-            // Points[16] = { player: "black", checkers: 3 };
+            Points[0] = { player: "black", checkers: 2 };
+            Points[11] = { player: "black", checkers: 5 };
+            Points[16] = { player: "black", checkers: 3 };
             Points[18] = { player: "black", checkers: 5 };
-            // Points[23] = { player: "white", checkers: 2 };
-            // Points[12] = { player: "white", checkers: 5 };
-            // Points[7] = { player: "white", checkers: 3 };
+
+            Points[23] = { player: "white", checkers: 2 };
+            Points[12] = { player: "white", checkers: 5 };
+            Points[7] = { player: "white", checkers: 3 };
             Points[5] = { player: "white", checkers: 5 };
         };
         drawBoard();

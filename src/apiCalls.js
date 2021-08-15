@@ -6,7 +6,7 @@ export const loginCall = async (userCredential, dispatch) => {
   try {
     const res = await axios.post(config.url + "/auth/login", userCredential);
     dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-    window.location.reload();
+    //window.location.reload();
   } catch (err) {
     switch (err.response.status) {
       case 400:
@@ -25,7 +25,7 @@ export const loginCall = async (userCredential, dispatch) => {
 
 export const logoutCall = async (dispatch) => {
   dispatch({ type: "LOGOUT" });
-  window.location.reload();
+  //window.location.reload();
 };
 
 
