@@ -21,6 +21,7 @@ const App = () => {
   const { user } = useContext(AuthContext);
   const { dispatch } = useContext(AuthContext);
   useEffect(async () => {
+    console.log(process.env.PUBLIC_URL);
     if (user) {
       await axios.get(config.url + `/auth/isUserAuth`, {
         headers: {
