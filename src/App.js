@@ -40,26 +40,26 @@ const App = () => {
     <>
       <TopBar initHistory={history} initUser={user}></TopBar>
       <Switch>
-        <Route exact path="/">
+        <Route exact path={process.env.PUBLIC_URL + '/'}>
           {user ? <Home /> : <Register />}
         </Route>
-        <Route path="/signOut" >
+        <Route path={process.env.PUBLIC_URL + '/signOut'} >
           {user ? <SignOut initHistory={history} /> : <Redirect to="/SendMessage" />
           }</Route>
-        <Route path="/login">
+        <Route path={process.env.PUBLIC_URL + '/login'} >
           {user ? <Redirect to="/SendMessage" /> : <Login />}
         </Route>
-        <Route path="/register">
+        <Route path={process.env.PUBLIC_URL + '/register'} >
           {user ? <Redirect to="/" /> : <Register />}
         </Route>
-        <Route path="/SendMessage" >
+        <Route path={process.env.PUBLIC_URL + '/SendMessage'}  >
           {user ? <ContactScreen /> : <Redirect to="/login" />}
         </Route>
-        <Route path="/Backgammon" >
+        <Route path={process.env.PUBLIC_URL + '/Backgammon'}  >
           {user ? <ContactScreen /> : <Redirect to="/login" />}
         </Route>
-        <Route path="/HowToPlay" component={HowToPlay}></Route>
-        <Route path="/About" component={About}></Route>
+        <Route path={process.env.PUBLIC_URL + '/HowToPlay'} component={HowToPlay}></Route>
+        <Route path={process.env.PUBLIC_URL + '/About'} component={About}></Route>
       </Switch>
     </>
   );
