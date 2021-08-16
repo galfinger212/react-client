@@ -370,7 +370,7 @@ const ContactsScreen = () => {
                             <button className="Button" onClick={StartChatClick} disabled={selectedUser === null ? true : false}>
                                 <img className="Button" src={process.env.PUBLIC_URL + "images/chatbtn.png"}></img>
                             </button>
-                            <button onClick={StartGameClick} disabled={selectedUser === null ? true : false}>
+                            <button onClick={StartGameClick} disabled={selectedUser === null || sendRequest ? true : false}>
                                 {sendRequest === false ? <img className="Button" src={process.env.PUBLIC_URL + "images/backgammon.png"}></img>
                                     : <Loader
                                         type="Rings"
