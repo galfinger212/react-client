@@ -1,5 +1,6 @@
 import "../ContactScreen/ContactScreen.css";
 import 'emoji-mart/css/emoji-mart.css'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { useContext, useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 import { AuthContext } from "../../context/AuthContext";
@@ -11,7 +12,6 @@ import Message from "../../components/message/Message";
 import Backgammon from "../../components/Backgammon/Backgammon";
 import User from "../../components/User/User";
 import config from '../../config';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 
 const Points = Array(24).fill({ player: false, checkers: 0 });
@@ -228,7 +228,7 @@ const ContactsScreen = () => {
 
     //the message that the current user send have been seen ' now need to update the current chat
     useEffect(async () => {
-        if (sendSeen !== null) {
+        if (sendSeen !== null && currentChat != null) {
             setCurrentChat(sendSeen.conversation);
         }
     }, [sendSeen]);
