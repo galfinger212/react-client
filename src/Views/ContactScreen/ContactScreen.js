@@ -11,12 +11,16 @@ import Message from "../../components/message/Message";
 import Backgammon from "../../components/Backgammon/Backgammon";
 import User from "../../components/User/User";
 import config from '../../config';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
+
 const Points = Array(24).fill({ player: false, checkers: 0 });
 
 const ContactsScreen = () => {
     const [onlineUsers, setOnlineUsers] = useState([]);
     const [currentChat, setCurrentChat] = useState(null);
     const [emojiPicker, SetEmojiPicker] = useState(false);
+    const [sendRequest, SetSendRequest] = useState(false);
     const [currentBoard, setCurrentBoard] = useState(null);
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState("");
@@ -41,6 +45,7 @@ const ContactsScreen = () => {
             senderId: user._id,
             receiverId: selectedUser._id
         });
+        SetSendRequest(!sendRequest);
     }
 
     //open a conversation with the selected user
@@ -122,8 +127,9 @@ const ContactsScreen = () => {
                 setSelectedUser(null);
             }
             else {
-                alert("its seems that he don't want to chat with you...");
+                alert("its seems that he don't want to play with you...");
             }
+            SetSendRequest(!sendRequest);
         }
     }, [approveGameRequest]);
 
@@ -365,7 +371,14 @@ const ContactsScreen = () => {
                                 <img className="Button" src={process.env.PUBLIC_URL + "images/chatbtn.png"}></img>
                             </button>
                             <button onClick={StartGameClick} disabled={selectedUser === null ? true : false}>
-                                <img className="Button" src={process.env.PUBLIC_URL + "images/backgammon.png"}></img>
+                                {sendRequest === false ? <img className="Button" src={process.env.PUBLIC_URL + "images/backgammon.png"}></img>
+                                    : <Loader
+                                        type="Rings"
+                                        color="#00BFFF"
+                                        height={80}
+                                        width={80}
+                                        timeout={5000} //5 secs
+                                    />}
                             </button>
                         </div>
                     </div>
