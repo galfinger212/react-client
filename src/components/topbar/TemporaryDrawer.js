@@ -14,7 +14,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 
 const useStyles = makeStyles({
     list: {
@@ -23,10 +23,6 @@ const useStyles = makeStyles({
 });
 
 export default function TemporaryDrawer({ initUser, initHistory }) {
-    useEffect(async () => {
-        console.log(initUser);
-        console.log(initHistory);
-    }, []);
     const classes = useStyles();
     const currentRout = useRef("/");
     const user = useRef(initUser);
