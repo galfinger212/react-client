@@ -228,7 +228,7 @@ const ContactsScreen = () => {
 
     //the message that the current user send have been seen ' now need to update the current chat
     useEffect(async () => {
-        if (sendSeen !== null && currentChat != null) {
+        if (sendSeen !== null && currentChat != null && currentChat?.members.includes(sendSeen?.sender)) {
             setCurrentChat(sendSeen.conversation);
         }
     }, [sendSeen]);
